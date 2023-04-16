@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ConstructionOutlined } from '@mui/icons-material';
-import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded';
 import WarningAmberRoundedIcon from '@mui/icons-material/WarningAmberRounded';
 import {
@@ -11,6 +11,7 @@ import {
   Divider,
   FormControl,
   FormLabel,
+  IconButton,
   Sheet,
   Stack,
   Typography,
@@ -51,17 +52,21 @@ const Tool = (props: {
   children?: React.ReactNode;
 }) => {
   return (
-    <Sheet variant="outlined" sx={{ borderRadius: 10, p: 2, minWidth: 150 }}>
-      <Stack direction={'column'} gap={1}>
-        <Typography level="h6">{props.title}</Typography>
-        <Typography className="truncate" level="body1">
-          {props.description}
-        </Typography>
-        <Chip variant="soft" size="sm" sx={{ mr: 'auto' }}>
-          datastore
-        </Chip>
-
+    <Sheet variant="outlined" sx={{ borderRadius: 10, p: 2, width: '100%' }}>
+      <Stack direction={'row'} alignItems={'start'} gap={2}>
         {props.children}
+
+        <Stack direction={'column'} gap={0}>
+          <Stack direction="row" gap={2}>
+            <Typography level="body1">{props.title}</Typography>
+            <Chip variant="soft" size="sm" sx={{ mr: 'auto' }}>
+              datastore
+            </Chip>
+          </Stack>
+          <Typography className="truncate" level="body2">
+            {props.description}
+          </Typography>
+        </Stack>
       </Stack>
     </Sheet>
   );
@@ -186,12 +191,10 @@ export default function BaseForm(props: Props) {
                 description={tool.description!}
                 type={tool.type}
               >
-                <Button
-                  variant="outlined"
-                  color="neutral"
+                <IconButton
+                  variant="plain"
+                  color="danger"
                   size="sm"
-                  sx={{ mt: 2 }}
-                  startDecorator={<RemoveCircleOutlineRoundedIcon />}
                   onClick={() => {
                     methods.setValue(
                       'tools',
@@ -199,8 +202,8 @@ export default function BaseForm(props: Props) {
                     );
                   }}
                 >
-                  Remove
-                </Button>
+                  <RemoveCircleOutlineRoundedIcon />
+                </IconButton>
               </Tool>
             ))}
           </Stack>
@@ -215,11 +218,10 @@ export default function BaseForm(props: Props) {
                   description={datastore.description}
                   type={ToolType.datastore}
                 >
-                  <Button
-                    sx={{ mt: 2 }}
+                  <IconButton
                     size="sm"
-                    variant="outlined"
-                    startDecorator={<AddRoundedIcon />}
+                    variant="plain"
+                    color="success"
                     onClick={() => {
                       methods.setValue('tools', [
                         ...tools,
@@ -232,8 +234,8 @@ export default function BaseForm(props: Props) {
                       ]);
                     }}
                   >
-                    Add
-                  </Button>
+                    <AddCircleOutlineRoundedIcon />
+                  </IconButton>
                 </Tool>
               ))}
           </Stack>
