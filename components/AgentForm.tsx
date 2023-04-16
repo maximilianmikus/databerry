@@ -5,6 +5,7 @@ import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutl
 import WarningAmberRoundedIcon from '@mui/icons-material/WarningAmberRounded';
 import {
   Alert,
+  Box,
   Button,
   Checkbox,
   Chip,
@@ -56,12 +57,18 @@ const Tool = (props: {
       <Stack direction={'row'} alignItems={'start'} gap={2}>
         {props.children}
 
-        <Stack direction={'column'} gap={0}>
-          <Stack direction="row" gap={2}>
-            <Typography level="body1">{props.title}</Typography>
-            <Chip variant="soft" size="sm" sx={{ mr: 'auto' }}>
-              datastore
-            </Chip>
+        <Stack direction={'column'} spacing={0} width={'100%'}>
+          <Stack direction="row" spacing={2} justifyContent={'space-between'}>
+            <Stack sx={{ minWidth: 0 }}>
+              <Typography level="body1">
+                {props.title} f skldfjs sdkjfsdfkjhsdf fjkdhs
+              </Typography>
+            </Stack>
+            <Stack ml="auto">
+              <Chip variant="soft" size="sm">
+                datastore
+              </Chip>
+            </Stack>
           </Stack>
           <Typography className="truncate" level="body2">
             {props.description}
