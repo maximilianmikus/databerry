@@ -1,7 +1,7 @@
 import AutoFixHighRoundedIcon from '@mui/icons-material/AutoFixHighRounded';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubbleOutlineRounded';
 import QuestionMarkRoundedIcon from '@mui/icons-material/QuestionMarkRounded';
-// Icons import
+import SmartToyRoundedIcon from '@mui/icons-material/SmartToyRounded'; // Icons import
 import StorageRoundedIcon from '@mui/icons-material/StorageRounded';
 import { Card, Divider, Stack, Typography } from '@mui/joy';
 import Box from '@mui/joy/Box';
@@ -35,6 +35,12 @@ export default function Navigation() {
 
   const items = React.useMemo(() => {
     return [
+      {
+        label: 'Agents',
+        route: RouteNames.AGENTS,
+        icon: <SmartToyRoundedIcon fontSize="small" />,
+        active: router.route === RouteNames.AGENTS,
+      },
       {
         label: 'Datastores',
         route: RouteNames.DATASTORES,
